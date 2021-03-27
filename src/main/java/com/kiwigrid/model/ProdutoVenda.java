@@ -1,22 +1,30 @@
 package com.kiwigrid.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 public class ProdutoVenda extends PanacheEntity {
 	
-	@ManyToOne(optional = false)
+	@JsonBackReference(value = "produto_produtoVenda")
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	private Produto produto;
 
 	@NotNull
 	@Positive
 	private Integer quantidade;
+
+	@JsonBackReference(value = "venda_produtoVenda")
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Venda venda;
 
 	public ProdutoVenda() {}
 
@@ -47,6 +55,10 @@ public class ProdutoVenda extends PanacheEntity {
 
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public Venda getVenda() {
+		return venda;
 	}
 
 }
