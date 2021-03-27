@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -23,6 +24,15 @@ public class Venda extends PanacheEntity {
 	public Venda(Vendedor vendedor, List<ProdutoVenda> produtos) {
 		this.vendedor = vendedor;
 		this.produtos = produtos;
+	}
+
+	@Transient
+	public Double getValorTotal() {
+		return produtos
+			.stream()
+			.map(produtoVenda -> produtoVenda.getSubTotal())
+			.mapToDouble(Double::doubleValue)
+			.sum();
 	}
 
 	public Vendedor getVendedor() {
