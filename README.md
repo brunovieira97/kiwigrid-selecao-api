@@ -13,7 +13,7 @@ Optei por desenvolver utilizando o framework Quarkus, junto de Hibernate com Pan
  - [ ] CRUD de Vendedor
 	- Possui Nome e Matrícula
 	- Busca é feita por Matrícula
- - [ ] CUD de Produto
+ - [x] CRUD de Produto
 	- Possui Nome e Preço
 	- Sem busca necessária
  - [ ] Cadastro de Venda
