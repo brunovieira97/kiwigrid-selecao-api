@@ -4,19 +4,23 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 public class Venda extends PanacheEntity {
-	
-	@ManyToOne
+
+	@ManyToOne(optional = false)
 	private Vendedor vendedor;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@JsonManagedReference(value = "venda_produtoVenda")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<ProdutoVenda> produtos;
 
 	public Venda() {}

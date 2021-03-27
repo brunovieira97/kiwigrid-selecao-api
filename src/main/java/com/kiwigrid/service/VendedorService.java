@@ -1,5 +1,6 @@
 package com.kiwigrid.service;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -49,6 +50,24 @@ public class VendedorService implements Service<Vendedor, Long> {
 		return Vendedor
 			.find("matricula like ?1", "%" + matricula + "%")
 			.list();
+	}
+
+	public List<Vendedor> rankByVendas() {
+		List<Vendedor> vendedores = Vendedor.listAll();
+
+		return vendedores
+			.stream()
+			.sorted(Comparator.comparing(Vendedor::getQuantidadeVendas).reversed())
+			.toList();
+	}
+
+	public List<Vendedor> rankByValorVendas() {
+		List<Vendedor> vendedores = Vendedor.listAll();
+
+		return vendedores
+			.stream()
+			.sorted(Comparator.comparing(Vendedor::getValorTotalVendas).reversed())
+			.toList();
 	}
 
 	private Vendedor updateVendedor(Vendedor vendedor, Vendedor vendedorNew) {

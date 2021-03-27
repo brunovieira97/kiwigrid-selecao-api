@@ -21,4 +21,22 @@ public class VendedorResource extends RestCrudResource<Vendedor, Long> {
 			)
 			.build();
 	}
+
+	@GET
+	@Path("/stats/rankByVendas")
+	public Response rankByVendas() {
+		return Response
+			.status(Response.Status.OK)
+			.entity(((VendedorService) service).rankByVendas())
+			.build();
+	}
+
+	@GET
+	@Path("/stats/rankByValorVendas")
+	public Response rankByValorTotalVendas() {
+		return Response
+			.status(Response.Status.OK)
+			.entity(((VendedorService) service).rankByValorVendas())
+			.build();
+	}
 }
