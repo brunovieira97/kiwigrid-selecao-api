@@ -16,7 +16,7 @@ Optei por desenvolver utilizando o framework Quarkus, junto de Hibernate com Pan
  - [x] CRUD de Produto
 	- Possui Nome e Preço
 	- Sem busca necessária
- - [ ] Cadastro de Venda
+ - [x] Cadastro de Venda
 	- Definida por Vendedor + Lista de Produtos + Valor Total
  - [ ] Endpoints de Estatísticas
 	- [ ] Lista dos Vendedores por maior número de vendas
