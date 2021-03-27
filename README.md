@@ -18,10 +18,10 @@ Optei por desenvolver utilizando o framework Quarkus, junto de Hibernate com Pan
 	- Sem busca necessária
  - [x] Cadastro de Venda
 	- Definida por Vendedor + Lista de Produtos + Valor Total
- - [ ] Endpoints de Estatísticas
-	- [ ] Lista dos Vendedores por maior número de vendas
-	- [ ] Lista dos Vendedores por valor de vendas
-	- [ ] Lista de Produtos mais vendidos
+ - [x] Endpoints de Estatísticas
+	- [x] Lista dos Vendedores por maior número de vendas
+	- [x] Lista dos Vendedores por valor de vendas
+	- [x] Lista de Produtos mais vendidos
 
 ### Opcionais
 
