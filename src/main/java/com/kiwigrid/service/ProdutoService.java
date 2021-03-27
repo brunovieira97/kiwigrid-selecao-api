@@ -26,10 +26,8 @@ public class ProdutoService implements Service<Produto, Long> {
 	}
 
 	@Override
-	public Produto create(Produto produto) {
+	public void create(Produto produto) {
 		produto.persist();
-
-		return produto;
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface Service<Entity, ID> {
 
 	public Entity findById(ID id) throws ResourceNotFoundException;
 
-	public Entity create(Entity entity);
+	public void create(Entity entity);
 
 	public void update(ID id, Entity entity) throws ResourceNotFoundException;
 

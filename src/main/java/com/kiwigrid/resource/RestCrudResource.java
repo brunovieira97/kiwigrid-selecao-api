@@ -50,10 +50,17 @@ public abstract class RestCrudResource<Entity, ID> {
 	@POST
 	@Transactional
 	public Response create(@Valid Entity entity) {
-		return Response
-			.status(Response.Status.CREATED)
-			.entity(this.service.create(entity))
-			.build();
+		try {
+			this.service.create(entity);
+
+			return Response
+				.status(Response.Status.CREATED)
+				.build();
+		} catch (UnsupportedOperationException e) {
+			return Response
+				.status(Response.Status.NOT_IMPLEMENTED)
+				.build();
+		}
 	}
 
 	@PUT
@@ -69,6 +76,10 @@ public abstract class RestCrudResource<Entity, ID> {
 		} catch (ResourceNotFoundException e) {
 			return Response
 				.status(Response.Status.NO_CONTENT)
+				.build();
+		} catch (UnsupportedOperationException e) {
+			return Response
+				.status(Response.Status.NOT_IMPLEMENTED)
 				.build();
 		}
 	}
@@ -86,6 +97,10 @@ public abstract class RestCrudResource<Entity, ID> {
 		} catch (ResourceNotFoundException e) {
 			return Response
 				.status(Response.Status.NO_CONTENT)
+				.build();
+		} catch (UnsupportedOperationException e) {
+			return Response
+				.status(Response.Status.NOT_IMPLEMENTED)
 				.build();
 		}
 	}

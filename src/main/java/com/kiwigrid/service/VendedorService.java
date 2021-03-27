@@ -26,10 +26,8 @@ public class VendedorService implements Service<Vendedor, Long> {
 	}
 
 	@Override
-	public Vendedor create(Vendedor vendedor) {
+	public void create(Vendedor vendedor) {
 		vendedor.persist();
-
-		return vendedor;
 	}
 
 	@Override
