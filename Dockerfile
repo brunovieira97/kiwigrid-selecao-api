@@ -1,4 +1,4 @@
-FROM openjdk:15-jdk as build
+FROM openjdk:16-jdk as build
 WORKDIR /app
 
 COPY mvnw .
@@ -12,7 +12,7 @@ COPY src src
 
 RUN ./mvnw package -DskipTests
 
-FROM openjdk:15-alpine as runner
+FROM openjdk:16-alpine as runner
 ARG JAR_PATH=/app/target/quarkus-app
 
 COPY --from=build ${DEPENDENCY} /app
