@@ -10,7 +10,7 @@ Optei por desenvolver utilizando o framework Quarkus, junto de Hibernate com Pan
 
 ### Obrigatórios
 
- - [ ] CRUD de Vendedor
+ - [x] CRUD de Vendedor
 	- Possui Nome e Matrícula
 	- Busca é feita por Matrícula
  - [x] CRUD de Produto
