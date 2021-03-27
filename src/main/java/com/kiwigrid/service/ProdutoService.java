@@ -1,5 +1,6 @@
 package com.kiwigrid.service;
 
+import java.util.Comparator;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -43,6 +44,15 @@ public class ProdutoService implements Service<Produto, Long> {
 		Produto produto = this.findById(id);
 
 		produto.delete();
+	}
+
+	public List<Produto> rankByVendas() {
+		List<Produto> produtos = Produto.listAll();
+
+		return produtos
+			.stream()
+			.sorted(Comparator.comparing(Produto::getVendidos).reversed())
+			.toList();
 	}
 
 	private Produto updateProduto(Produto produto, Produto produtoNew) {
