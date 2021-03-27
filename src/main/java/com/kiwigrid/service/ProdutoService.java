@@ -10,10 +10,12 @@ import com.kiwigrid.model.Produto;
 @ApplicationScoped
 public class ProdutoService implements Service<Produto, Long> {
 	
+	@Override
 	public List<Produto> findAll() {
 		return Produto.listAll();
 	}
 
+	@Override
 	public Produto findById(Long id) throws ResourceNotFoundException {
 		Produto produto = Produto.findById(id);
 
@@ -23,12 +25,14 @@ public class ProdutoService implements Service<Produto, Long> {
 		return produto;
 	}
 
+	@Override
 	public Produto create(Produto produto) {
 		produto.persist();
 
 		return produto;
 	}
 
+	@Override
 	public void update(Long id, Produto produtoNew) throws ResourceNotFoundException {
 		Produto produto = this.findById(id);
 
@@ -36,6 +40,7 @@ public class ProdutoService implements Service<Produto, Long> {
 		produto.persist();
 	}
 
+	@Override
 	public void delete(Long id) throws ResourceNotFoundException {
 		Produto produto = this.findById(id);
 
