@@ -2,6 +2,7 @@ package com.kiwigrid.service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -58,7 +59,7 @@ public class VendedorService implements Service<Vendedor, Long> {
 		return vendedores
 			.stream()
 			.sorted(Comparator.comparing(Vendedor::getQuantidadeVendas).reversed())
-			.toList();
+			.collect(Collectors.toList());
 	}
 
 	public List<Vendedor> rankByValorVendas() {
@@ -67,7 +68,7 @@ public class VendedorService implements Service<Vendedor, Long> {
 		return vendedores
 			.stream()
 			.sorted(Comparator.comparing(Vendedor::getValorTotalVendas).reversed())
-			.toList();
+			.collect(Collectors.toList());
 	}
 
 	private Vendedor updateVendedor(Vendedor vendedor, Vendedor vendedorNew) {
