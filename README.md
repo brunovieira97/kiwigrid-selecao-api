@@ -25,7 +25,7 @@ Optei por desenvolver utilizando o framework Quarkus, junto de Hibernate com Pan
 
 ### Opcionais
 
- - [ ] Dockerfile para gerar imagem Docker e executar a aplicação
+ - [x] Dockerfile para gerar imagem Docker e executar a aplicação
  - [ ] Diagrama com arquitetura para alta carga de acessos nos endpoints de Estatísticas
  - Qualquer outro entregável que seja considerado necessário
 
