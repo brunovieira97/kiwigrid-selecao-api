@@ -2,6 +2,7 @@ package com.kiwigrid.service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -52,7 +53,7 @@ public class ProdutoService implements Service<Produto, Long> {
 		return produtos
 			.stream()
 			.sorted(Comparator.comparing(Produto::getVendidos).reversed())
-			.toList();
+			.collect(Collectors.toList());
 	}
 
 	private Produto updateProduto(Produto produto, Produto produtoNew) {
