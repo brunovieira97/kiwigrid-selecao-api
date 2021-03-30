@@ -6,6 +6,88 @@ O propósito do desafio é entregar uma API de CRUD de vendas sem fazer uso de q
 
 Optei por desenvolver utilizando o framework Quarkus, junto de Hibernate com Panache e RestEasy.
 
+## Executando
+
+```sh
+# gerar imagem docker a partir do dockerfile
+docker build -t kiwigrid-api:latest .
+
+# criar container para a imagem, expondo a porta 8080
+docker run -d -p8080:8080 --name api kiwigrid-api:latest
+```
+
+## Exemplos de Requests
+
+Abaixo, alguns exemplos pontuais de consumo da API desenvolvida. Para uma documentação mais completa, é possível utilizar a [collection do Postman](kiwigrid.json), que exportei e adicionei ao repositório.
+
+### Cadastrar Vendedor
+
+```http
+POST /api/vendedores HTTP/1.1
+Host: localhost:8080
+Content-Length: 60
+
+{
+    "matricula": "12346",
+    "nome": "João da Silva"
+}
+```
+
+### Listar Vendedores
+
+```http
+GET /api/vendedores HTTP/1.1
+Host: localhost:8080
+```
+
+### Cadastrar Produto
+
+```http
+POST /api/produtos HTTP/1.1
+Host: localhost:8080
+Content-Length: 59
+
+{
+    "nome": "Produto de Exemplo",
+    "preco": 10.00
+}
+```
+
+### Listar Produtos
+
+```http
+GET /api/produtos HTTP/1.1
+Host: localhost:8080
+```
+
+### Cadastrar Venda
+```http
+POST /api/vendas HTTP/1.1
+Host: localhost:8080
+Content-Length: 193
+
+{
+    "vendedor": {
+        "id": 4
+    },
+    "produtos": [
+        {
+            "produto": {
+                "id": 3
+            },
+            "quantidade": 10
+        }
+    ]
+}
+```
+
+### Listar Vendas
+
+```http
+GET /api/vendas HTTP/1.1
+Host: localhost:8080
+```
+
 ## Requisitos
 
 ### Obrigatórios
